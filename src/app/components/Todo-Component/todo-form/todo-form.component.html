@@ -1,0 +1,19 @@
+<form [formGroup]="TodoForm" (ngSubmit)="TodoTask()">
+  <div class="row-auto p-2 w-full mt-8">
+    <app-inputs
+      [class]="'rounded-lg border border-emerald-400 p-2 text-black'"
+      [placeHolder]="'Ingresa tu tarea'"
+      [formControlName]="'todoInput'"
+      [name]="'todoInput'"
+      [type]="'text'"
+    ></app-inputs>
+    <app-buttons
+      [classButton]="
+        'bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-900'
+      "
+      [type]="'submit'"
+      [titleButton]="titleButton"
+    >
+    </app-buttons>
+  </div>
+</form>
