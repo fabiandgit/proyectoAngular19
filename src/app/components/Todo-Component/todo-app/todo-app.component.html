@@ -1,5 +1,7 @@
 <div class="flex items-center justify-center flex-col w-full">
   <h1 class="text-3xl">{{ title }}</h1>
   <app-todo-form (task)="sendInfo($event)"></app-todo-form>
-  <app-todo-list [task]="task"></app-todo-list>
+  <div class="ancho">
+    <app-todo-list [task]="task"></app-todo-list>
+  </div>
 </div>

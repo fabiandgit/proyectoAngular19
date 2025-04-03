@@ -11,4 +11,5 @@ export class ButtonsComponent {
   titleButton = input<string>();
   type = input<string>();
   classButton = input<string>();
+  disabled = input<boolean>();
 }

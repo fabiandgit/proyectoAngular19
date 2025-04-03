@@ -1,6 +1,11 @@
 import { Component, input, output } from '@angular/core';
 import { InputsComponent } from '../../../shared/inputs/inputs.component';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ButtonsComponent } from '../../../shared/buttons/buttons.component';
 import { ModelTask } from '../../../models/task-model';
 
@@ -16,22 +21,27 @@ export class TodoFormComponent {
   task = output<{}>();
   //button
   titleButton: string = 'Crear';
+  isButton: boolean = false;
   valueTask: ModelTask = {
     id: 0,
     name: '',
     completed: false,
   };
   constructor() {
-    this.todoInput = new FormControl('');
+    this.todoInput = new FormControl('', Validators.required);
     this.TodoForm = new FormGroup({
       todoInput: this.todoInput,
     });
   }
 
   TodoTask() {
-    this.valueTask.id++;
-    this.valueTask.name = this.TodoForm.value.todoInput;
-    this.task.emit(this.valueTask);
-    this.todoInput.reset();
+    if (this.TodoForm.valid) {
+      this.isButton = true;
+      this.valueTask.id++;
+      this.valueTask.name = this.TodoForm.value.todoInput;
+      this.task.emit(this.valueTask);
+      this.todoInput.reset();
+    }
+    this.isButton = false;
   }
 }

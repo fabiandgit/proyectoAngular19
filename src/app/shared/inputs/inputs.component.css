@@ -1,0 +1,8 @@
+input:focus {
+  border-color: rgb(171, 220, 24); /* Cambia el color del borde */
+  border-width: 4px;
+}
+input:hover {
+  border-color: blue; /* Cambia el color del borde */
+  border-width: 4px;
+}

@@ -52,5 +52,9 @@ export class TodoListComponent {
     const updatedList = storedList.filter((item: any) => item.id !== id);
     localStorage.setItem('tasks', JSON.stringify(updatedList));
     this.list = updatedList; // Actualizamos la lista en el componente
+    // if (this.list.length == 0) {
+    //   localStorage.removeItem('tasks');
+    // }
+    this.list.length === 0 && localStorage.removeItem('tasks');
   }
 }

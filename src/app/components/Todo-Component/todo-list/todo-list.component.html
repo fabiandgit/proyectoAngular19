@@ -1,8 +1,14 @@
 <div class="text-white mt-10 pt-1 pb-1">
-  <ul>
+  @if (list.length == 0 ) {
+  <p class="flex justify-center text-3xl mt-11">
+    No tienes ninguna tarea pendiente
+  </p>
+  }@else {
+
+  <ul class="">
     @for (item of list; track $index) {
     <li
-      class="flex justify-around gap-10 p-4 text-2xl bg-blue-500 border-white content-li"
+      class="flex justify-around gap-10 p-4 text-2xl bg-blue-500 border-white content-li cursor-pointer hover:bg-blue-700"
       [ngClass]="{ 'completed-item-active': item.completed }"
     >
       <span class="cursor-pointer" (click)="checkTask(item.id)">
@@ -17,4 +23,5 @@
     </li>
     }
   </ul>
+  }
 </div>
