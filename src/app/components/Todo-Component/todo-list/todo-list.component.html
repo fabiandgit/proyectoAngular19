@@ -1,12 +1,17 @@
-<div class="bg-blue-400 text-white mt-10">
-  <ul class="">
+<div class="text-white mt-10 pt-1 pb-1">
+  <ul>
     @for (item of list; track $index) {
-    <li class="flex justify-around gap-10 p-4 text-2xl">
-      <span class="cursor-pointer" (click)="checkTask()">
+    <li
+      class="flex justify-around gap-10 p-4 text-2xl bg-blue-500 border-white content-li"
+      [ngClass]="{ 'completed-item-active': item.completed }"
+    >
+      <span class="cursor-pointer" (click)="checkTask(item.id)">
         <fa-icon [icon]="faCheck" style="color: #63e6be"></fa-icon
       ></span>
-      {{ item.name }}
-      <span class="cursor-pointer" (click)="deleteTask()"
+      <p class="prueba">
+        {{ item.name }}
+      </p>
+      <span class="cursor-pointer" (click)="deleteTask(item.id)"
         ><fa-icon [icon]="faTrash" style="color: #d03737"></fa-icon
       ></span>
     </li>

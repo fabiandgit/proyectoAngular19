@@ -1,0 +1,8 @@
+.content-li {
+  margin: 10px 20px 20px 20px;
+  border-radius: 5px;
+}
+
+.completed-item-active {
+  text-decoration: rgb(25, 135, 25) solid 4px line-through;
+}

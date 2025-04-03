@@ -15,13 +15,13 @@ export class TodoAppComponent {
 
   constructor() {
     this.task = {
+      id: 0,
       name: '',
       completed: false,
     };
   }
 
   sendInfo(e: any) {
-    console.log('cuidado', e);
     this.task = { ...e };
   }
 }

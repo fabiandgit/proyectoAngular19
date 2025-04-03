@@ -17,6 +17,7 @@ export class TodoFormComponent {
   //button
   titleButton: string = 'Crear';
   valueTask: ModelTask = {
+    id: 0,
     name: '',
     completed: false,
   };
@@ -28,7 +29,9 @@ export class TodoFormComponent {
   }
 
   TodoTask() {
+    this.valueTask.id++;
     this.valueTask.name = this.TodoForm.value.todoInput;
     this.task.emit(this.valueTask);
+    this.todoInput.reset();
   }
 }
