@@ -1,7 +1,15 @@
-<div class="bg-red-400 text-white mt-10">
-  <ul class="gap-3">
+<div class="bg-blue-400 text-white mt-10">
+  <ul class="">
     @for (item of list; track $index) {
-    <li class="p-4 text-2xl"><span>c</span> {{ item }} <span>X</span></li>
+    <li class="flex justify-around gap-10 p-4 text-2xl">
+      <span class="cursor-pointer" (click)="checkTask()">
+        <fa-icon [icon]="faCheck" style="color: #63e6be"></fa-icon
+      ></span>
+      {{ item.name }}
+      <span class="cursor-pointer" (click)="deleteTask()"
+        ><fa-icon [icon]="faTrash" style="color: #d03737"></fa-icon
+      ></span>
+    </li>
     }
   </ul>
 </div>

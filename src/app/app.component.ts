@@ -4,10 +4,11 @@ import { TodoAplicationComponent } from './pages/todo-aplication/todo-aplication
 import { DarkModeService } from './services/dark-mode.service';
 // import { ButtonsComponent } from './shared/buttons/buttons.component';
 // import { ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-root',
-  imports: [TodoAplicationComponent],
+  imports: [TodoAplicationComponent, FontAwesomeModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

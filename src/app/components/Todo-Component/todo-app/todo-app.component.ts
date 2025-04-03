@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TodoFormComponent } from '../todo-form/todo-form.component';
 import { TodoListComponent } from '../todo-list/todo-list.component';
+import { ModelTask } from '../../../models/task-model';
 
 @Component({
   selector: 'app-todo-app',
@@ -10,9 +11,17 @@ import { TodoListComponent } from '../todo-list/todo-list.component';
 })
 export class TodoAppComponent {
   title: string = 'Tareas Pendientes';
-  task: string = '';
+  task: ModelTask;
+
+  constructor() {
+    this.task = {
+      name: '',
+      completed: false,
+    };
+  }
 
   sendInfo(e: any) {
-    this.task = e;
+    console.log('cuidado', e);
+    this.task = { ...e };
   }
 }
