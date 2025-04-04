@@ -8,17 +8,4 @@ import { DarkModeService } from '../../services/dark-mode.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {
-  isMode: boolean = false;
-
-  constructor(public DarkModeService: DarkModeService) {}
-
-  changeMode() {
-    this.isMode = !this.isMode;
-    if (this.isMode) {
-      this.DarkModeService.enableDarkMode();
-    } else {
-      this.DarkModeService.disableDarkMode();
-    }
-  }
-}
+export class HomeComponent {}
