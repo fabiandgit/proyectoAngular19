@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
-import { InputsComponent } from '../../../shared/inputs/inputs.component';
-import { ButtonsComponent } from '../../../shared/buttons/buttons.component';
+import { WeatherFormComponent } from '../weather-form/weather-form.component';
 
 @Component({
   selector: 'app-weather',
-  imports: [InputsComponent, ButtonsComponent],
+  imports: [WeatherFormComponent],
   templateUrl: './weather.component.html',
   styleUrl: './weather.component.css',
 })
-export class WeatherComponent {
-  title: string = 'titulo';
-}
+export class WeatherComponent {}

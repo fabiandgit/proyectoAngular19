@@ -19,7 +19,6 @@ export class InputsComponent implements ControlValueAccessor {
   type = input();
   placeHolder = input();
   class = input();
-  classLabel = input();
   value: any = '';
   onChange = (value: any) => {};
   onTouched = () => {};
