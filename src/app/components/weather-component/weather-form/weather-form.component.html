@@ -1,13 +1,19 @@
-<form class="mt-5" [formGroup]="weatherform" (submit)="sendInfo()">
-  <app-inputs
-    [class]="'text-black'"
-    [type]="'text'"
-    [id]="'country'"
-    formControlName="country"
-  ></app-inputs>
-  <app-buttons
-    [classButton]="'bg-blue-500'"
-    [type]="'submit'"
-    [titleButton]="titleButton"
-  ></app-buttons>
+<form [formGroup]="weatherform" (submit)="sendInfo()">
+  <div class="flex justify-center row-auto p-2 w-full mt-8">
+    <app-inputs
+      [class]="
+        'rounded-lg border border-emerald-600 p-2 text-black input-hover'
+      "
+      [type]="'text'"
+      [id]="'country'"
+      formControlName="country"
+    ></app-inputs>
+    <app-buttons
+      [classButton]="
+        'bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'
+      "
+      [type]="'submit'"
+      [titleButton]="titleButton"
+    ></app-buttons>
+  </div>
 </form>
