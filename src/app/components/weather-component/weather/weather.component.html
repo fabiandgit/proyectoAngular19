@@ -1,6 +1,10 @@
 <div class="flex items-center justify-center flex-col w-full">
   <h1 class="text-3xl">{{ title }}</h1>
   <app-weather-form (cityWeather)="getWeatherData($event)"></app-weather-form>
-  <p class="mt-4 text-3xl">{{ city }}</p>
-  <p>Sensacion térmica {{ feels_like }}</p>
+  @if (isTable) {
+  <p class="my-5 text-3xl">{{ city }}</p>
+  <app-table [columns]="columns" [InfoWeather]="infoWeather"></app-table>
+  }@else {
+  <p class="mt-5 text-3xl">Realiza tu busqueda</p>
+  }
 </div>

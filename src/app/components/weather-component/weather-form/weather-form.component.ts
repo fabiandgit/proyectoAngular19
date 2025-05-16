@@ -41,18 +41,17 @@ export class WeatherFormComponent {
         console.error('problema al obtener los datos', error);
       }
     );
+    this.country.reset();
   }
 
   getWeatherInfo(latitud: any, longitud: any, city: string) {
     this.weatherService.getWeather(latitud, longitud).subscribe(
       (data) => {
         if (data) {
-          console.log(data);
           const updatedData = {
             ...data, // Copiar propiedades existentes del objeto data
             city: city, // Añadir la nueva propiedad 'city'
           };
-          console.log(updatedData);
           this.cityWeather.emit(updatedData);
         }
       },
