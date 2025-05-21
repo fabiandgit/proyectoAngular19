@@ -17,3 +17,6 @@
     ></app-buttons>
   </div>
 </form>
+@if (isEmpty) {
+<app-alerts [typeAlert]="typeAlert" [complement]="complement"></app-alerts>
+}
