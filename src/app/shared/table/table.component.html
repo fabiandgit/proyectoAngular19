@@ -1,4 +1,4 @@
-<table class="min-w-full border border-gray-300 rounded-lg shadow-md">
+<!-- <table class="min-w-full border border-gray-300 rounded-lg shadow-md">
   <thead>
     <tr class="bg-gray-200 text-gray-700">
       @for (column of columns; track $index) {
@@ -17,4 +17,26 @@
       }
     </tr>
   </tbody>
-</table>
+</table> -->
+<div class="table-container w-full">
+  <table class="min-w-full border border-gray-300 rounded-lg shadow-md">
+    <thead>
+      <tr class="bg-gray-200 text-gray-700">
+        @for (column of columns; track $index) {
+        <th class="px-4 py-2 text-center column-title">
+          {{ column.toUpperCase() }}
+        </th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border-b hover:bg-gray-50 hover:text-slate-900">
+        @for (data of InfoWeather; track $index) {
+        <td class="px-4 py-2">
+          {{ [data] }}
+        </td>
+        }
+      </tr>
+    </tbody>
+  </table>
+</div>

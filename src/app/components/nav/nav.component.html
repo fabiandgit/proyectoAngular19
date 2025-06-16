@@ -8,10 +8,10 @@
       ></fa-icon>
     </li>
     <li class="text-lg mt-1 font-bold hover:text-blue-500">
-      <a routerLink="/Task">Task</a>
+      <a routerLink="/Task">{{ Task }}</a>
     </li>
     <li class="text-1sm mt-1 font-bold hover:text-blue-500">
-      <a routerLink="/Weather">Weather</a>
+      <a routerLink="/Weather">{{ Weather }}</a>
     </li>
     <div>
       <!-- probar app button -->
@@ -20,7 +20,7 @@
         type="button"
         (click)="changeMode()"
       >
-        {{ isMode ? "Modo Claro" : "Modo Oscuro" }}
+        {{ isMode ? lightMode : darkMode }}
       </button>
     </div>
   </ul>

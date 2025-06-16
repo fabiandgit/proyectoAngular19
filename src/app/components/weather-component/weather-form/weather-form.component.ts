@@ -2,8 +2,17 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { InputsComponent } from '../../../shared/inputs/inputs.component';
 import { ButtonsComponent } from '../../../shared/buttons/buttons.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { WeatherService } from '../../../services/weather.service';
 import { AlertsComponent } from '../../../shared/alerts/alerts.component';
+import { WeatherService } from '../../../services/weather.service';
+import {
+  buttonSearch,
+  successAlert,
+  warningAlert,
+  errorAlert,
+  GetCity,
+  errorGetCity,
+  errorGetApi,
+} from '@constantes/const';
 
 @Component({
   selector: 'app-weather-form',
@@ -20,7 +29,7 @@ export class WeatherFormComponent {
   @Output() cityWeather = new EventEmitter<{}>();
   weatherform: FormGroup;
   country: FormControl;
-  titleButton: string = 'Buscar';
+  titleButton: string = buttonSearch;
   city: string = '';
   isEmpty: boolean = false;
   typeAlert: string = '';
@@ -46,18 +55,18 @@ export class WeatherFormComponent {
           this.getWeatherInfo(latitud, longitud, this.city);
           this.country.reset();
           this.isEmpty = true;
-          this.typeAlert = '¡Éxito!';
-          this.complement = 'La busquueda fue exitosa';
+          this.typeAlert = successAlert;
+          this.complement = GetCity;
         } else {
           this.isEmpty = true;
-          this.typeAlert = '¡Alerta!';
-          this.complement = 'No se encontro la ciudad';
+          this.typeAlert = warningAlert;
+          this.complement = errorGetCity;
         }
       },
       (error) => {
         console.error('problema al obtener los datos', error);
-        this.typeAlert = '¡Error!';
-        this.complement = 'Problema con el servidor';
+        this.typeAlert = errorAlert;
+        this.complement = errorGetApi;
       }
     );
     this.country.reset();

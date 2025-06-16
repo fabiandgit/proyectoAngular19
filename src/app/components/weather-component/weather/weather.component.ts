@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { WeatherFormComponent } from '../weather-form/weather-form.component';
 import { TableComponent } from '../../../shared/table/table.component';
+import { weather, SearchWeather, TitletableWeather } from '@constantes/const';
 
 @Component({
   selector: 'app-weather',
@@ -9,24 +10,13 @@ import { TableComponent } from '../../../shared/table/table.component';
   styleUrl: './weather.component.css',
 })
 export class WeatherComponent {
-  title: string = 'Clima';
+  weather: string = weather;
+  SearchWeather: string = SearchWeather;
   city: string = '';
   feels_like: string = '';
   infoWeather: [string] = [''];
   isTable: boolean = false;
-  columns: any = [
-    'country',
-    'weather',
-    'description',
-    'temp',
-    'feels_like',
-    'humidity',
-    'pressure',
-    'temp_max',
-    'temp_min',
-    'rain',
-    'wind',
-  ];
+  columns = TitletableWeather;
 
   getWeatherData(data: any) {
     console.log(data);

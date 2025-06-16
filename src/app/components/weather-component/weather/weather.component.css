@@ -1,0 +1,60 @@
+/* Estilos generales para la tabla */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Permite desplazamiento horizontal en pantallas pequeñas */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.column-name {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+/* Estilos específicos para pantallas pequeñas (menos de 768px) */
+@media (max-width: 768px) {
+  .table-container table {
+    width: 100%;
+  }
+
+  .column-title {
+    display: none; /* Ocultar los títulos de las columnas en pantallas pequeñas */
+  }
+
+  .table-container td {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .table-container td .column-name {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+
+  .table-container td::before {
+    content: attr(
+      data-column
+    ); /* Usar los títulos de las columnas como contenido antes de los datos */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Estilos para pantallas medianas o mayores (768px y más) */
+@media (min-width: 768px) {
+  .table-container td {
+    display: table-cell;
+  }
+}

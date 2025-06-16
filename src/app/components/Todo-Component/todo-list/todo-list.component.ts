@@ -4,6 +4,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { ModelTask } from '../../../models/task-model';
 import { NgClass } from '@angular/common';
+import { textTodoList } from '@constantes/const';
 
 @Component({
   selector: 'app-todo-list',
@@ -17,6 +18,7 @@ export class TodoListComponent {
   list: ModelTask[] = [];
   faCheck = faCheck; // Asigna el icono a una variable
   faTrash = faTrash; // Asigna el icono a una variable
+  NoTasks = textTodoList;
 
   ngOnInit() {
     const savedTasks = localStorage.getItem('tasks');
@@ -36,13 +38,13 @@ export class TodoListComponent {
   }
 
   checkTask(id: number) {
-    console.log('completada');
+    // console.log('completada');
     this.list.map((index) => {
       if (id == index.id) {
         index.completed = true;
       }
     });
-    console.log('list', this.list);
+    // console.log('list', this.list);
   }
 
   deleteTask(id: number) {
