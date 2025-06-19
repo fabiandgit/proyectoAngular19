@@ -13,7 +13,7 @@ export const pendingTasks = 'Tareas Pendientes';
 export const textTodoList = 'Felicidades! no tienes tareas pendiente 👍';
 
 //weather
-export const weather = 'Clima';
+export const weather = 'Weather';
 export const SearchWeather = 'Realiza tu busqueda';
 export const TitletableWeather: any = [
   'country',
@@ -31,6 +31,8 @@ export const TitletableWeather: any = [
 export const GetCity = 'La busqueda fue exitosa';
 export const errorGetCity = 'No se encontro la ciudad';
 export const errorGetApi = 'Problema al obtener los datos de la api';
+export const countryErrorField = '* El pais es obligatorio';
+export const cityErrorField = '* La ciudad es obligatoria';
 
 //typeButtons
 export const buttonSearch = 'Buscar';

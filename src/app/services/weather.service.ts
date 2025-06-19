@@ -14,8 +14,7 @@ export class WeatherService {
   constructor(private http: HttpClient) {}
 
   //api para saber cual es la latitud y longitud de la ciudad
-  getWeatherGeo(city: string): Observable<any> {
-    const country = 'Colombia';
+  getWeatherGeo(city: string, country: string): Observable<any> {
     const url = `${this.apiUrlGeocodificacion}?q=${city},${country}&limit=1&appid=${this.apiKey}`;
     return this.http.get(url);
   }
