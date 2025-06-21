@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { ButtonsComponent } from '../../../shared/buttons/buttons.component';
 import { ModelTask } from '../../../models/task-model';
+import { addTask, buttonCreate } from '@constantes/const';
 
 @Component({
   selector: 'app-todo-form',
@@ -20,13 +21,15 @@ export class TodoFormComponent {
   todoInput: FormControl;
   task = output<{}>();
   //button
-  titleButton: string = 'Crear';
+  titleButton: string = buttonCreate;
   isButton: boolean = false;
   valueTask: ModelTask = {
     id: 0,
     name: '',
     completed: false,
   };
+
+  addTask: string = addTask;
   constructor() {
     this.todoInput = new FormControl('', Validators.required);
     this.TodoForm = new FormGroup({

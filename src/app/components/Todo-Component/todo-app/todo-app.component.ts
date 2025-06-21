@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TodoFormComponent } from '../todo-form/todo-form.component';
 import { TodoListComponent } from '../todo-list/todo-list.component';
 import { ModelTask } from '../../../models/task-model';
+import { pendingTasks } from '@constantes/const';
 
 @Component({
   selector: 'app-todo-app',
@@ -10,7 +11,7 @@ import { ModelTask } from '../../../models/task-model';
   styleUrl: './todo-app.component.css',
 })
 export class TodoAppComponent {
-  title: string = 'Tareas Pendientes';
+  pendingTasks: string = pendingTasks;
   task: ModelTask;
 
   constructor() {

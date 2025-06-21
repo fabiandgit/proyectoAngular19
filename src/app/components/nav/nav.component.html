@@ -1,5 +1,22 @@
-<nav class="bg-emerald-600 p-5">
-  <ul class="flex justify-around">
+<nav class="bg-emerald-600 p-5 w-full">
+  <div class="flex justify-between items-center">
+    <!-- Botón para abrir/cerrar el menú en pantallas pequeñas -->
+    <button
+      (click)="toggleMenu()"
+      class="lg:hidden text-white hover:text-blue-500"
+    >
+      <fa-icon [icon]="faBars"></fa-icon>
+    </button>
+  </div>
+  <ul
+    [ngClass]="{
+      flex: isMenuOpen,
+      hidden: !isMenuOpen,
+      'lg:flex': true,
+      'justify-around': true,
+      'mt-4': true
+    }"
+  >
     <li class="mt-1">
       <fa-icon
         [icon]="faHome"
@@ -8,19 +25,18 @@
       ></fa-icon>
     </li>
     <li class="text-lg mt-1 font-bold hover:text-blue-500">
-      <a routerLink="/Task">Task</a>
+      <a routerLink="/Task">{{ Task }}</a>
     </li>
-    <li class="text-1sm mt-1 font-bold hover:text-blue-500">
-      <a routerLink="/Weather">Weather</a>
+    <li class="text-lg mt-1 font-bold hover:text-blue-500">
+      <a routerLink="/Weather">{{ Weather }}</a>
     </li>
     <div>
-      <!-- probar app button -->
       <button
         class="bg-blue-500 p-1 rounded text-white hover:bg-blue-600"
         type="button"
         (click)="changeMode()"
       >
-        {{ isMode ? "Modo Claro" : "Modo Oscuro" }}
+        {{ isMode ? lightMode : darkMode }}
       </button>
     </div>
   </ul>

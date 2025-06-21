@@ -1,0 +1,13 @@
+@if (isVisible) {
+
+<div
+  class="p-4 rounded-md flex items-center justify-between mx-auto"
+  [ngClass]="alertClass"
+  role="alert"
+>
+  <span class="font-semibold">{{ typeAlert }}</span> {{ complement }}.
+  <button (click)="closeAlert()" class="ml-4" [ngClass]="closeButtonClass">
+    &times;
+  </button>
+</div>
+}

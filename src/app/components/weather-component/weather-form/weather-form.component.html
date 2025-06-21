@@ -1,0 +1,51 @@
+<form [formGroup]="weatherform" (submit)="sendInfo()">
+  <div class="flex flex-col justify-center p-2 w-full mt-8">
+    <!-- Campo de entrada para el país -->
+    <div class="mb-2">
+      <app-inputs
+        [class]="
+          'rounded-lg border border-emerald-600 p-2 text-black input-hover'
+        "
+        [type]="'text'"
+        [id]="'country'"
+        placeHolder="country"
+        formControlName="country"
+      ></app-inputs>
+      <!-- Mensaje de error para el país -->
+      @if (country.invalid && country.touched) {
+      <p class="text-red-500">{{ countryErrorField }}</p>
+      }
+    </div>
+
+    <!-- Campo de entrada para la ciudad -->
+    <div class="mb-2">
+      <app-inputs
+        [class]="
+          'rounded-lg border border-emerald-600 p-2 text-black input-hover'
+        "
+        [type]="'text'"
+        [id]="'city'"
+        placeHolder="city"
+        formControlName="city"
+      ></app-inputs>
+      <!-- Mensaje de error para la ciudad -->
+      @if (city.invalid && city.touched) {
+      <p class="text-red-500">{{ cityErrorField }}</p>
+      }
+    </div>
+
+    <!-- Botón de envío -->
+    <app-buttons
+      [classButton]="
+        'bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'
+      "
+      [type]="'submit'"
+      [titleButton]="titleButton"
+    ></app-buttons>
+  </div>
+</form>
+
+<!-- Alerta si el formulario está vacío -->
+<!-- @if (isEmpty) {
+<app-alerts [typeAlert]="typeAlert" [complement]="complement"></app-alerts>
+} -->

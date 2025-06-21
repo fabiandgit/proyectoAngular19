@@ -4,6 +4,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { ModelTask } from '../../../models/task-model';
 import { NgClass } from '@angular/common';
+import { textTodoList } from '@constantes/const';
 
 @Component({
   selector: 'app-todo-list',
@@ -16,7 +17,8 @@ export class TodoListComponent {
   @Input() task!: ModelTask;
   list: ModelTask[] = [];
   faCheck = faCheck; // Asigna el icono a una variable
-  faTrash = faTrash; // Asigna el icono a una variable
+  faTrash = faTrash;
+  NoTasks = textTodoList;
 
   ngOnInit() {
     const savedTasks = localStorage.getItem('tasks');
@@ -36,22 +38,21 @@ export class TodoListComponent {
   }
 
   checkTask(id: number) {
-    console.log('completada');
     this.list.map((index) => {
       if (id == index.id) {
         index.completed = true;
       }
     });
-    console.log('list', this.list);
   }
 
   deleteTask(id: number) {
-    console.log('eliminada');
     const localStorageTask = localStorage.getItem('tasks') || '[]';
-    const storedList = JSON.parse(localStorageTask); // se convierte a tipo json
+    // se convierte a tipo json
+    const storedList = JSON.parse(localStorageTask);
     const updatedList = storedList.filter((item: any) => item.id !== id);
     localStorage.setItem('tasks', JSON.stringify(updatedList));
-    this.list = updatedList; // Actualizamos la lista en el componente
+    // Actualizamos la lista en el componente
+    this.list = updatedList;
     // if (this.list.length == 0) {
     //   localStorage.removeItem('tasks');
     // }

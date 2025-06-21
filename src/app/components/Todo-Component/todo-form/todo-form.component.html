@@ -11,7 +11,7 @@
         [type]="'text'"
       ></app-inputs>
       @if (todoInput.invalid && todoInput.touched) {
-      <p class="text-red-500">Por favor Ingresa una tarea</p>
+      <p class="text-red-500">{{ addTask }}</p>
       }
     </div>
     <app-buttons
