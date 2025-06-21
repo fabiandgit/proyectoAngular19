@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { WeatherFormComponent } from '../weather-form/weather-form.component';
 import { TableComponent } from '../../../shared/table/table.component';
 import { weather, SearchWeather, TitletableWeather } from '@constantes/const';
+import { AlertsComponent } from 'src/app/shared/alerts/alerts.component';
 
 @Component({
   selector: 'app-weather',
-  imports: [WeatherFormComponent, TableComponent],
+  imports: [WeatherFormComponent, AlertsComponent, TableComponent],
   templateUrl: './weather.component.html',
   styleUrl: './weather.component.css',
 })
@@ -17,7 +18,20 @@ export class WeatherComponent {
   infoWeather: [string] = [''];
   isTable: boolean = false;
   columns = TitletableWeather;
+  emptyAlert = false;
+  typeAlert = '';
+  complement = '';
 
+  getAlert(alert: any) {
+    console.log('alert', alert);
+    if (alert) {
+      this.emptyAlert = true;
+      this.typeAlert = alert.type;
+      this.complement = alert.complement;
+    } else {
+      this.emptyAlert = false;
+    }
+  }
   getWeatherData(data: any) {
     console.log(data);
     this.infoWeather.splice(0, this.infoWeather.length); // Elimina todos los elementos
@@ -42,6 +56,6 @@ export class WeatherComponent {
     this.infoWeather.push(data.main.temp_min);
     this.infoWeather.push(data.rain ? data.rain : 'sin lluvia');
     this.infoWeather.push(data.wind ? data.wind.speed : 'sin viento');
-    console.log('this.infoWeather', this.infoWeather);
+    // console.log('this.infoWeather', this.infoWeather);
   }
 }

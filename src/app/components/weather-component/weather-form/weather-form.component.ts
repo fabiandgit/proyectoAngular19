@@ -27,13 +27,14 @@ import {
     InputsComponent,
     ButtonsComponent,
     ReactiveFormsModule,
-    AlertsComponent,
+    // AlertsComponent,
   ],
   templateUrl: './weather-form.component.html',
   styleUrl: './weather-form.component.css',
 })
 export class WeatherFormComponent {
   @Output() cityWeather = new EventEmitter<{}>();
+  @Output() sendAlert = new EventEmitter<{}>();
   weatherform: FormGroup;
   country: FormControl;
   city: FormControl;
@@ -45,6 +46,10 @@ export class WeatherFormComponent {
   complement: string = '';
   countryErrorField: string = countryErrorField;
   cityErrorField: string = cityErrorField;
+  alert = {
+    type: '',
+    complement: '',
+  };
 
   constructor(public weatherService: WeatherService) {
     this.country = new FormControl('', Validators.required);
@@ -56,7 +61,7 @@ export class WeatherFormComponent {
   }
 
   sendInfo() {
-    this.weatherform.value.pais.toLowerCase();
+    this.weatherform.value.city.toLowerCase();
     this.country2 = this.firstLetterMayus(this.weatherform.value.country);
     this.city2 = this.weatherform.value.city;
     let latitud = '';
@@ -68,28 +73,36 @@ export class WeatherFormComponent {
           this.isEmpty = true;
           latitud = data[0].lat;
           longitud = data[0].lon;
-          this.getWeatherInfo(latitud, longitud, this.city2);
+          this.alert.type = successAlert;
+          this.alert.complement = GetCity;
+          this.getWeatherInfo(latitud, longitud, this.city2, this.alert);
           this.country.reset();
           this.city.reset();
-          this.typeAlert = successAlert;
-          this.complement = GetCity;
+          // this.typeAlert = successAlert;
+          // this.complement = GetCity;
         } else {
-          this.isEmpty = true;
-          this.typeAlert = warningAlert;
-          this.complement = errorGetCity;
+          // this.isEmpty = true;
+          this.alert.type = warningAlert;
+          this.alert.complement = errorGetCity;
+          this.sendAlert.emit(this.alert);
+          // this.typeAlert = warningAlert;
+          // this.complement = errorGetCity;
         }
       },
       (error) => {
         console.error('problema al obtener los datos', error);
-        this.typeAlert = errorAlert;
-        this.complement = errorGetApi;
+        this.alert.type = errorAlert;
+        this.alert.complement = errorGetApi;
+        this.sendAlert.emit(this.alert);
+        // this.typeAlert = errorAlert;
+        // this.complement = errorGetApi;
       }
     );
     this.country.reset();
     this.city.reset();
   }
 
-  getWeatherInfo(latitud: any, longitud: any, city: string) {
+  getWeatherInfo(latitud: any, longitud: any, city: string, alert: any) {
     this.weatherService.getWeather(latitud, longitud).subscribe(
       (data) => {
         if (data) {
@@ -98,6 +111,7 @@ export class WeatherFormComponent {
             city: city, // Añadir la nueva propiedad 'city'
           };
           this.cityWeather.emit(updatedData);
+          this.sendAlert.emit(alert);
         }
       },
       (error) => {

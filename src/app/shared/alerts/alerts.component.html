@@ -1,30 +1,13 @@
-<!-- <button (click)="showAlert()">Mostrar Alerta</button> -->
-<!-- 
+@if (isVisible) {
+
 <div
-  class="bg-red-100 text-red-800 p-4 rounded-md flex items-center justify-between"
+  class="p-4 rounded-md flex items-center justify-between mx-auto"
+  [ngClass]="alertClass"
   role="alert"
 >
-  <span class="font-semibold">Error:</span> Algo salió mal.
-  <button
-    onclick="this.parentElement.style.display='none'"
-    class="ml-4 text-red-500 hover:text-red-700"
-  >
+  <span class="font-semibold">{{ typeAlert }}</span> {{ complement }}.
+  <button (click)="closeAlert()" class="ml-4" [ngClass]="closeButtonClass">
     &times;
   </button>
 </div>
-
-<div class="bg-red-100 text-red-800 p-4 rounded-md" role="alert">
-  <span class="font-semibold">Error:</span> Algo salió mal, por favor intenta de
-  nuevo.
-</div>
-<div class="bg-yellow-100 text-yellow-800 p-4 rounded-md" role="alert">
-  <span class="font-semibold">Advertencia:</span> Ten cuidado, algo necesita
-  atención.
-</div>
-<div class="bg-blue-100 text-blue-800 p-4 rounded-md" role="alert">
-  <span class="font-semibold">Información:</span> Aquí tienes un mensaje
-  informativo.
-</div>
-<div class="bg-green-100 text-green-800 p-4 rounded-md" role="alert">
-  <span class="font-semibold">¡Éxito!</span> La operación fue exitosa.
-</div>-->
+}

@@ -1,7 +1,14 @@
 <div class="flex items-center justify-center flex-col w-full p-4">
   <h1 class="text-3xl sm:text-2xl md:text-4xl">{{ weather }}</h1>
-  <app-weather-form (cityWeather)="getWeatherData($event)"></app-weather-form>
-
+  <app-weather-form
+    (cityWeather)="getWeatherData($event)"
+    (sendAlert)="getAlert($event)"
+  ></app-weather-form>
+  <div>
+    @if(emptyAlert) {
+    <app-alerts [typeAlert]="typeAlert" [complement]="complement"></app-alerts>
+    }
+  </div>
   @if (isTable) {
   <p class="my-5 text-3xl sm:text-2xl md:text-3xl">{{ city }}</p>
   <app-table [columns]="columns" [InfoWeather]="infoWeather"></app-table>
