@@ -23,7 +23,6 @@ export class WeatherComponent {
   complement = '';
 
   getAlert(alert: any) {
-    console.log('alert', alert);
     if (alert) {
       this.emptyAlert = true;
       this.typeAlert = alert.type;
@@ -33,7 +32,6 @@ export class WeatherComponent {
     }
   }
   getWeatherData(data: any) {
-    console.log(data);
     this.infoWeather.splice(0, this.infoWeather.length); // Elimina todos los elementos
 
     if (data) {
@@ -56,6 +54,5 @@ export class WeatherComponent {
     this.infoWeather.push(data.main.temp_min);
     this.infoWeather.push(data.rain ? data.rain : 'sin lluvia');
     this.infoWeather.push(data.wind ? data.wind.speed : 'sin viento');
-    // console.log('this.infoWeather', this.infoWeather);
   }
 }

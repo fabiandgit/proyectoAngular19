@@ -13,11 +13,8 @@ export class AlertsComponent {
   isVisible: boolean = false;
   alertClass: string = '';
   closeButtonClass: string = '';
-  // typeText: string = '';
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
     this.showAlert();
   }
 
@@ -60,7 +57,6 @@ export class AlertsComponent {
   //   }, 3000);
   // }
   showAlert() {
-    // Configura las clases y propiedades según el tipo de alerta
     if (this.typeAlert === '¡Éxito!') {
       this.alertClass = 'bg-green-100 text-green-800';
       this.closeButtonClass = 'text-green-500 hover:text-green-700';

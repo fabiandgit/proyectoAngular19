@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-// import { ButtonsComponent } from './shared/buttons/buttons.component';
-// import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterOutlet } from '@angular/router';
 

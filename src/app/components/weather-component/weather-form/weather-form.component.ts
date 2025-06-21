@@ -23,12 +23,7 @@ import {
 
 @Component({
   selector: 'app-weather-form',
-  imports: [
-    InputsComponent,
-    ButtonsComponent,
-    ReactiveFormsModule,
-    // AlertsComponent,
-  ],
+  imports: [InputsComponent, ButtonsComponent, ReactiveFormsModule],
   templateUrl: './weather-form.component.html',
   styleUrl: './weather-form.component.css',
 })
@@ -78,15 +73,10 @@ export class WeatherFormComponent {
           this.getWeatherInfo(latitud, longitud, this.city2, this.alert);
           this.country.reset();
           this.city.reset();
-          // this.typeAlert = successAlert;
-          // this.complement = GetCity;
         } else {
-          // this.isEmpty = true;
           this.alert.type = warningAlert;
           this.alert.complement = errorGetCity;
           this.sendAlert.emit(this.alert);
-          // this.typeAlert = warningAlert;
-          // this.complement = errorGetCity;
         }
       },
       (error) => {
@@ -94,8 +84,6 @@ export class WeatherFormComponent {
         this.alert.type = errorAlert;
         this.alert.complement = errorGetApi;
         this.sendAlert.emit(this.alert);
-        // this.typeAlert = errorAlert;
-        // this.complement = errorGetApi;
       }
     );
     this.country.reset();
@@ -108,7 +96,7 @@ export class WeatherFormComponent {
         if (data) {
           const updatedData = {
             ...data, // Copiar propiedades existentes del objeto data
-            city: city, // Añadir la nueva propiedad 'city'
+            city: city, //propiedad city
           };
           this.cityWeather.emit(updatedData);
           this.sendAlert.emit(alert);
